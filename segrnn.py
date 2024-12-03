@@ -36,6 +36,7 @@ class SegRNNModel(pl.LightningModule):
       super(SegRNNModel, self).__init__()
       self.model = SegRNN(input_size, hidden_size, output_size, segment_length)
       self.criterion = nn.MSELoss()
+      self.criterion2 = nn.L1Loss()
       self.learning_rate = learning_rate
 
    def forward(self, x):
@@ -45,8 +46,10 @@ class SegRNNModel(pl.LightningModule):
       inputs, targets = batch
       outputs = self(inputs)
       loss = self.criterion(outputs, targets)
-      self.log("train_loss", loss, prog_bar=True)
-      print(f"Train Loss: {loss.item()}")
+
+      self.log("train_mse_loss", loss, prog_bar=True)
+      self.log("train_mae_loss", 
+      # print(f"Train MSE Loss: {loss.item()}")
       return loss
 
    def validation_step(self, batch, batch_idx):
