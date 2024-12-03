@@ -46,9 +46,9 @@ class SegRNNModel(pl.LightningModule):
       inputs, targets = batch
       outputs = self(inputs)
       loss = self.criterion(outputs, targets)
-
+      loss2 = self.criterion2(outputs, targets)
       self.log("train_mse_loss", loss, prog_bar=True)
-      self.log("train_mae_loss", 
+      self.log("train_mae_loss", loss2, prog_bar=True)
       # print(f"Train MSE Loss: {loss.item()}")
       return loss
 
