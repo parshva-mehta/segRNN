@@ -56,7 +56,7 @@ class SegRNNModel(pl.LightningModule):
       inputs, targets = batch
       outputs = self(inputs)
       loss = self.criterion(outputs, targets)
-      self.log("val_loss", loss, prog_bar=True)
+      # self.log("val_loss", loss, prog_bar=True)
       print(f"Validation Loss: {loss.item()}")  # Explicit print
       return loss
 
@@ -64,7 +64,7 @@ class SegRNNModel(pl.LightningModule):
       inputs, targets = batch
       outputs = self(inputs)
       loss = self.criterion(outputs, targets)
-      self.log("test_loss", loss)
+      # self.log("test_loss", loss)
       return loss
 
    def configure_optimizers(self):

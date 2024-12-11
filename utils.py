@@ -1,7 +1,7 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-import os
 
 def calculate_distances(latlongs):
    num_stations = len(latlongs)
@@ -13,31 +13,13 @@ def calculate_distances(latlongs):
    return distances
 
 def handle_missing_values(df, continuous_cols):
-   # Step 3: Handle missing values in continuous variables
+   # Use only the specified 10 columns
+   continuous_cols = ['feel', 'relh', 'tmpf', 'vsby', 'sknt', 'mslp', 'p01i', 'alti', 'dwpf', 'drct']
 
-   # Identify columns to drop due to high NaN count
-   nan_threshold = df.shape[0] / 2                     # Remove columns with more than 50% missing values
-   print(f"nan thresh is {nan_threshold}")
-   bad_columns = [col for col in df.columns if df[col].isnull().sum() >= nan_threshold]
-   print(f"bad columns are {bad_columns}")
+   # Ensure only these columns are retained
+   df = df[continuous_cols + ['station']]
 
-   # Add less relevant and irrelevant features to the removal list
-   irrelevant_features = [
-      'ice_accretion_1hr', 'ice_accretion_3hr', 'ice_accretion_6hr',  # Fully NaN
-      'skyl1', 'skyl2', 'skyl3', 'skyl4',  # Less relevant (Sky level altitudes)
-      'skyc1', 'skyc2', 'skyc3', 'skyc4',  # Less relevant (Sky coverage)
-      'wxcodes',  # Categorical, redundant with precipitation/visibility
-      'metar'  # Text format, unusable directly
-   ]
-
-   # Combine both lists and ensure no duplicates
-   columns_to_remove = list(set(bad_columns + irrelevant_features))
-   df.drop(columns=columns_to_remove, inplace=True)
-
-   # Update continuous columns to exclude removed columns
-   continuous_cols = list(set(continuous_cols) - set(columns_to_remove))
-   print(f"{len(continuous_cols)} remaining continuous columns: {continuous_cols}")
-
+   print(f"Using fixed continuous columns: {continuous_cols}")
 
    # Apply linear interpolation within each station group using transform
    df[continuous_cols] = df.groupby('station')[continuous_cols].transform(
@@ -51,6 +33,7 @@ def handle_missing_values(df, continuous_cols):
    return df, continuous_cols
 
 def preprocess_and_save_data(input_path, normalize=True):
+   print('new function!')
    base_name = os.path.basename(input_path)  # Extracts 'JRB.csv'
    file_name, file_ext = os.path.splitext(base_name)  # Splits into 'JRB' and '.csv'
    output_path = os.path.join(os.path.dirname(input_path), f"{file_name}_processed{file_ext}")
@@ -65,10 +48,7 @@ def preprocess_and_save_data(input_path, normalize=True):
    df = df.sort_values(by=['station', 'valid']).reset_index(drop=True)
 
    # Step 2: Replace placeholders with np.nan in continuous columns
-   continuous_cols = ['tmpf', 'dwpf', 'relh', 'feel', 'drct', 'sknt', 'gust',
-                     'peak_wind_gust', 'peak_wind_drct', 'alti', 'mslp', 'vsby',
-                     'p01i', 'ice_accretion_1hr', 'ice_accretion_3hr', 'ice_accretion_6hr',
-                     'skyl1', 'skyl2', 'skyl3', 'skyl4', 'snowdepth', 'peak_wind_time']
+   continuous_cols = ['feel', 'relh', 'tmpf', 'vsby', 'sknt', 'mslp', 'p01i', 'alti', 'dwpf', 'drct']
 
    # List of placeholders to replace
    placeholders = ['M', 'T', '', 'NaN', 'NULL', 'None']
