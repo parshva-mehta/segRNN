@@ -1,0 +1,5 @@
+hidden_size: 512
+input_size: 10
+learning_rate: 0.001
+output_size: 10
+segment_length: 8

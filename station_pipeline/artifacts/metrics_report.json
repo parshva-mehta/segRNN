@@ -1,0 +1,71 @@
+{
+  "num_prediction_rows": 1982,
+  "num_features": 10,
+  "overall_directional_accuracy_from_predictions": 0.9757820383451059,
+  "global_mse_from_predictions": 0.061273132180111725,
+  "global_mae_from_predictions": 0.12683480674531586,
+  "base_metrics_json": {
+    "test_accuracy": 0.9757820383451059,
+    "test_precision": 0.9890567499506207,
+    "test_recall": 0.9653119092618475,
+    "test_f1": 0.9770400791861613,
+    "test_mse": 0.06127312406897545,
+    "test_mae": 0.12683480978012085,
+    "best_checkpoint": "/Users/parshvamehta/segRNN-GNN/segRNN/station_pipeline/checkpoints/segrnn-epoch=01-val_loss=0.0245.ckpt",
+    "created_at_utc": "2026-02-19T23:17:04.871196+00:00",
+    "lightning_test": {
+      "test_loss": 0.061273135244846344,
+      "test_mae_loss": 0.12683480978012085,
+      "test_accuracy": 0.9757820963859558,
+      "test_precision": 0.9893240332603455,
+      "test_recall": 0.9657192826271057,
+      "test_f1": 0.9771060347557068
+    }
+  },
+  "best_3_features_by_mae": [
+    {
+      "feature": "mslp",
+      "mse": 0.0021157125524409516,
+      "mae": 0.03491146409495459,
+      "rmse": 0.045996875463893756,
+      "bias": -0.019685033770030273
+    },
+    {
+      "feature": "alti",
+      "mse": 0.00540962733526842,
+      "mae": 0.06068780396072149,
+      "rmse": 0.07355016883235836,
+      "bias": -0.05232022042676589
+    },
+    {
+      "feature": "relh",
+      "mse": 0.009268692131663071,
+      "mae": 0.07244433183055499,
+      "rmse": 0.09627404703066694,
+      "bias": -0.045963930527426825
+    }
+  ],
+  "worst_3_features_by_mae": [
+    {
+      "feature": "vsby",
+      "mse": 0.0424879804873242,
+      "mae": 0.1515125914458628,
+      "rmse": 0.20612612761929092,
+      "bias": -0.0251949881017659
+    },
+    {
+      "feature": "sknt",
+      "mse": 0.06632713683007406,
+      "mae": 0.1929339442351413,
+      "rmse": 0.25754055375818785,
+      "bias": -0.0009666582559788039
+    },
+    {
+      "feature": "drct",
+      "mse": 0.25869323122702054,
+      "mae": 0.3132937078412714,
+      "rmse": 0.5086189450138684,
+      "bias": 0.09293295250484358
+    }
+  ]
+}

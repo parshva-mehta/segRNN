@@ -1,0 +1,18 @@
+{
+  "test_accuracy": 0.9757820383451059,
+  "test_precision": 0.9890567499506207,
+  "test_recall": 0.9653119092618475,
+  "test_f1": 0.9770400791861613,
+  "test_mse": 0.06127312406897545,
+  "test_mae": 0.12683480978012085,
+  "best_checkpoint": "/Users/parshvamehta/segRNN-GNN/segRNN/station_pipeline/checkpoints/segrnn-epoch=01-val_loss=0.0245.ckpt",
+  "created_at_utc": "2026-02-19T23:17:04.871196+00:00",
+  "lightning_test": {
+    "test_loss": 0.061273135244846344,
+    "test_mae_loss": 0.12683480978012085,
+    "test_accuracy": 0.9757820963859558,
+    "test_precision": 0.9893240332603455,
+    "test_recall": 0.9657192826271057,
+    "test_f1": 0.9771060347557068
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "created_at_utc": "2026-02-19T23:16:20.097867+00:00",
+  "input_csv": "/Users/parshvamehta/segRNN-GNN/segRNN/station_pipeline/data/raw/ROC_2026-01-20_2026-02-19.csv",
+  "processed_csv": "/Users/parshvamehta/segRNN-GNN/segRNN/station_pipeline/data/processed/ROC_2026-01-20_2026-02-19_processed.csv",
+  "normalize": true,
+  "n_steps_in": 24,
+  "n_steps_out": 1,
+  "test_split": 0.2,
+  "num_sequences": 9910,
+  "train_sequences": 7928,
+  "test_sequences": 1982
+}

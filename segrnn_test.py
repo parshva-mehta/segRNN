@@ -11,7 +11,7 @@ from pytorch_lightning import Trainer
 from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning import Trainer
-
+from pytorch_lightning.callbacks import EarlyStopping   
 # %%
 # Load the dataset
 # Replace 'your_dataset.csv' with your actual data file
@@ -206,13 +206,15 @@ checkpoint_callback = ModelCheckpoint(
     mode="min"
 )
 
+early_stop_callback = EarlyStopping(monitor="val_loss", patience=10, mode="min")
 # Trainer with logging and checkpointing
 trainer = Trainer(
-    max_epochs=4,
+    max_epochs=100,
     accelerator="gpu" if torch.cuda.is_available() else "cpu",
     devices=1,
     logger=logger,
-    callbacks=[checkpoint_callback]
+    strategy="fsdp" if torch.cuda.is_available() else "auto",
+    callbacks=[checkpoint_callback, early_stop_callback]
 )
 
 # Train the model

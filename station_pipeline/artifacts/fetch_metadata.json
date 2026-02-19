@@ -1,0 +1,22 @@
+{
+  "fetched_at_utc": "2026-02-19T23:21:34.451481+00:00",
+  "station_lookup": {
+    "requested_city": "Manhattan",
+    "requested_state": "NY",
+    "resolved_location": {
+      "display_name": "Manhattan, New York County, New York, United States",
+      "latitude": 40.7579554,
+      "longitude": -73.9855319
+    },
+    "network": "NY_ASOS",
+    "station": "NYC",
+    "station_name": "NEW YORK CITY",
+    "station_latitude": 40.779,
+    "station_longitude": -73.9692,
+    "distance_km": 2.71
+  },
+  "start_date": "2026-01-20",
+  "end_date": "2026-02-19",
+  "request_url": "https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?station=NYC&year1=2026&month1=1&day1=20&year2=2026&month2=2&day2=19&tz=Etc%2FUTC&format=onlycomma&latlon=no&elev=no&missing=M&trace=T&direct=yes&report_type=1&report_type=2&data=feel&data=relh&data=tmpf&data=vsby&data=sknt&data=mslp&data=p01i&data=alti&data=dwpf&data=drct",
+  "raw_csv_path": "/Users/parshvamehta/segRNN-GNN/segRNN/station_pipeline/data/raw/NYC_2026-01-20_2026-02-19.csv"
+}
